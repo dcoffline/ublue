@@ -6,48 +6,64 @@ description: Eric's custom Bazzite image with GNOME and COSMIC
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/bazzite-dx-gnome
-image-version: stable # latest is also supported if you want new updates ASAP
+image-version: stable          # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 modules:
   - type: files
     files:
       - source: system
-        destination: / # copies files/system/* into your image's root folder /
+        destination: /         # copies files/system/* into your image's root folder /
 
   - type: dnf
     repos:
       copr:
-        - ryanabx/cosmic-epoch # The COSMIC COPR
-        - peterwu/rendezvous # The official Bibata Cursors COPR
+      - ryanabx/cosmic-epoch    # The COSMIC COPR
+      - peterwu/rendezvous      # The official Bibata Cursors COPR
     install:
       packages:
-        - "@cosmic-desktop" # Now installed via DNF!
-        - neovim
-        - htop
-        - bibata-cursor-themes
-        - papirus-icon-theme
-        - jotta-cli
+        - "@cosmic-desktop"     # The COSMIC desktop environment group
+        - bibata-cursor-themes  # The Bibata Cursor Theme (I use the classic one)
+        - papirus-icon-theme    # The Papirus Icon Theme (I use the Darker one)
+        - jotta-cli             # The official Jottacloud CLI client (RPM)
+        - swayidle              # Idle management for sway (and COSMIC)
+        # --- The Homebrew Replacements ---
+        - atuin                 # Shell history sync
+        - bat                   # Cat clone with syntax highlighting
+        - chezmoi               # Dotfile manager
+        - eza                   # Modern ls replacement
+        - fd-find               # Modern find (Fedora names it fd-find)
+        - fzf                   # Fuzzy finder
+        - gh                    # GitHub CLI (Crucial for managing this recipe!)
+        - jq                    # JSON processor
+        - ripgrep               # Fast grep
+        - scrcpy                # Android screen mirroring
+        - tealdeer              # Fast tldr pages
+        - trash-cli             # CLI trash bin
+        - yazi                  # Terminal file manager
+        - yq                    # YAML processor
+        - zoxide                # Smarter cd
+        - cloudflared           # Cloudflare Tunnel client
+        - neovim                # The Neovim text editor
+        - htop                  # Interactive process viewer
+        - mergerfs              # Filesystem merger for pooling storage
 
   - type: systemd
     system:
       enabled:
-        - cloudflared-update.timer # The timer will automatically trigger the .service!
         - cloudflared.service
         - rclone-mounts.service
     user:
       enabled:
-        - jottad.service # This will now enable the official RPM service!
+        - jottad.service          # This will now enable the official RPM service!
         - groq-dictate.service
         - monitor-control.service
 
   - type: default-flatpaks
     configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
+      - notify: true              # Send notification after install/uninstall is finished (true/false)
         scope: system
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
-          - com.github.tchx84.Flatseal
-      - scope: user # Also add Flathub user repo, but no user packages
+        #install:                 # Removed the empty install: line to fix syntax error)
+      - scope: user               # Also add Flathub user repo, but no user packages
       
-  - type: signing
+  - type: signing                 # KEEP COMMENTED OUT UNTIL YOU GENERATE YOUR KEYS!
