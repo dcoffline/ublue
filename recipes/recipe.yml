@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# image will be published to ghcr.io/<user>/<name>
+# image will be published to ghcr.io/dcoffline/ublue
 name: bazzite-fortress
 # description will be included in the image's metadata
 description: Eric's custom Bazzite image with GNOME and COSMIC
@@ -17,7 +17,11 @@ modules:
 
   - type: dnf
     repos:
-      - https://repo.jotta.cloud/redhat
+      files:
+        add:
+          - https://repo.jotta.cloud/jotta-cli.repo
+        copr:
+          - ryanabx/cosmic-epoch # The COSMIC COPR!
     install:
       packages:
         - "@cosmic-desktop" # Now installed via DNF!
@@ -40,7 +44,6 @@ modules:
     user:
       enabled:
         - jottad.service # This will now enable the official RPM service!
-        - sunshine.service
         - groq-dictate.service
         - monitor-control.service
 
