@@ -20,9 +20,8 @@ modules:
       copr:
       - ryanabx/cosmic-epoch    # The COSMIC COPR
       - peterwu/rendezvous      # The official Bibata Cursors COPR
-      - atim/yazi               # Added for yazi
+      - lihaohong/yazi               # Added for yazi
       - zeno/scrcpy             # Added for scrcpy
-      - errornointernet/mergerfs # Added for mergerfs
     install:
       packages:
         - "@cosmic-desktop"     # The COSMIC desktop environment group
@@ -48,8 +47,7 @@ modules:
         - cloudflared           # Cloudflare Tunnel client
         - neovim                # The Neovim text editor
         - htop                  # Interactive process viewer
-        - mergerfs              # Filesystem merger for pooling storage
-
+        
   - type: systemd
     system:
       enabled:
