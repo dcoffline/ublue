@@ -19,14 +19,11 @@ modules:
     repos:
       copr:
       - ryanabx/cosmic-epoch    # The COSMIC COPR
-      - peterwu/rendezvous      # The official Bibata Cursors COPR
-      - lihaohong/yazi               # Added for yazi
+      - lihaohong/yazi          # Added for yazi
       - zeno/scrcpy             # Added for scrcpy
     install:
       packages:
         - "@cosmic-desktop"     # The COSMIC desktop environment group
-        - bibata-cursor-themes  # The Bibata Cursor Theme (I use the classic one)
-        - papirus-icon-theme    # The Papirus Icon Theme (I use the Darker one)
         - jotta-cli             # The official Jottacloud CLI client (RPM)
         - swayidle              # Idle management for sway (and COSMIC)
         # --- The Homebrew Replacements ---
