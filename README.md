@@ -1,6 +1,6 @@
 **🏰 Bazzite-Fortress**
 
-A custom, highly opinionated atomic operating system built on top of Bazzite and Fedora Silverblue. Designed for power users, Bazzite-Fortress merges the stability of a cloud-native, immutable home server with the bleeding-edge performance of the Rust-based COSMIC desktop environment.
+A custom, slightly opinionated atomic operating system built on top of Bazzite and Fedora Silverblue. Designed for power users, Bazzite-Fortress merges the stability of a cloud-native, immutable home server with the bleeding-edge performance of the Rust-based COSMIC desktop environment.
 
 Built autonomously via GitHub Actions using BlueBuild.
 
