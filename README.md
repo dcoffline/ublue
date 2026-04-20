@@ -1,6 +1,6 @@
 # 🏰 Bazzite-Fortress
 
-A custom, atomic operating system built on top of [Bazzite](https://bazzite.gg/) and Fedora Kinoite. This image is designed for power users who want a cloud-native, highly optimized workstation featuring the bleeding-edge COSMIC desktop environment. 
+A custom, atomic operating system built on top of [Bazzite](https://bazzite.gg/) and Fedora Silverblue. This image is designed for power users who want a cloud-native, highly optimized workstation featuring the bleeding-edge COSMIC desktop environment. 
 
 Built using [BlueBuild](https://blue-build.org/).
 
@@ -9,7 +9,7 @@ This image starts with the `bazzite-dx-gnome` base and layers on several specifi
 
 * **Desktop Environment:** Includes the System76 COSMIC Desktop Alpha (Nightly via COPR) alongside GNOME.
 * **Cloud & Storage:** Natively integrates `rclone`, `jotta-cli`, and `cloudflared` with auto-updating systemd timers and user services.
-* **Terminal Power-Ups:** Ships with `zsh`, `neovim`, `htop`, `btop`, and `distrobox` pre-installed for immediate containerized development.
+* **Terminal Power-Ups:** Ships with `zsh`, `neovim`, `htop`, `btop`, and `jotta-cli` pre-installed for immediate containerized development.
 * **Theming:** Pre-configured with Bibata Cursors (Modern Ice) and the Papirus Icon Theme.
 * **Flatpak Sandbox:** Installs Flatseal globally to easily manage Flatpak permissions.
 
