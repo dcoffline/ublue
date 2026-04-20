@@ -20,6 +20,9 @@ modules:
       copr:
       - ryanabx/cosmic-epoch    # The COSMIC COPR
       - peterwu/rendezvous      # The official Bibata Cursors COPR
+      - atim/yazi               # Added for yazi
+      - zeno/scrcpy             # Added for scrcpy
+      - errornointernet/mergerfs # Added for mergerfs
     install:
       packages:
         - "@cosmic-desktop"     # The COSMIC desktop environment group
@@ -35,7 +38,6 @@ modules:
         - fd-find               # Modern find (Fedora names it fd-find)
         - fzf                   # Fuzzy finder
         - gh                    # GitHub CLI (Crucial for managing this recipe!)
-        - jq                    # JSON processor
         - ripgrep               # Fast grep
         - scrcpy                # Android screen mirroring
         - tealdeer              # Fast tldr pages
