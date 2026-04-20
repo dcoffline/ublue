@@ -20,10 +20,10 @@ modules:
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
-      - usr: /usr
 
   - type: dnf
     repos:
+      - https://repo.jotta.us/jotta-cli.repo
     install:
       packages:
         - "@cosmic-desktop" # Now installed via DNF!
@@ -32,8 +32,10 @@ modules:
         - rclone
         - distrobox
         - htop
+        - btop
         - bibata-cursor-themes
         - papirus-icon-theme
+        - jotta-cli
 
   - type: default-flatpaks
     configurations:
