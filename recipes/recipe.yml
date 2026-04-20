@@ -30,6 +30,7 @@ modules:
         - "@cosmic-desktop"     # The COSMIC desktop environment group
         - jotta-cli             # The official Jottacloud CLI client (RPM)
         - swayidle              # Idle management for sway (and COSMIC)
+        - python3-devel
         # --- The Homebrew Replacements ---
         - atuin                 # Shell history sync
         - bat                   # Cat clone with syntax highlighting
