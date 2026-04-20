@@ -15,6 +15,10 @@ modules:
       - source: system
         destination: /         # copies files/system/* into your image's root folder /
 
+  - type: script
+    snippets:
+      - "mkdir -p /usr/local/bin"
+  
   - type: dnf
     repos:
       copr:
