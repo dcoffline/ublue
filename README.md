@@ -18,8 +18,6 @@ Theming: Pre-configured globally with Bibata Cursors (Modern Ice) and the Papiru
 ☁️ Storage & Networking (Headless)
 Native Cloudflared: Bakes in the official Cloudflare RPM to run your zero-trust domain tunnels headlessly at boot.
 
-Storage Pooling: Includes `mergerfs` for seamless multi-drive pooling.
-
 Cloud Sync: Natively integrates `rclone` (for 10TB mounts) and `jotta-cli` (official RPM) for background syncing.
 
 🦀 The "Modern Rust" CLI Stack
