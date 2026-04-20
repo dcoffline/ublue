@@ -6,8 +6,8 @@ RequiresMountsFor=/var/mnt/2T
 
 [Service]
 Type=forking
-ExecStart=/bin/bash /home/eric/.local/bin/rclone-mount
-ExecStop=/bin/bash /home/eric/.local/bin/rclone-unmount
+ExecStart=/bin/bash %h/.local/bin/rclone-mount
+ExecStop=/bin/bash %h/.local/bin/rclone-unmount
 User=eric
 Group=eric
 Restart=on-failure
