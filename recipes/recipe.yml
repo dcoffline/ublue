@@ -22,13 +22,9 @@ modules:
     install:
       packages:
         - "@cosmic-desktop" # Now installed via DNF!
-        - zsh
         - neovim
-        - rclone
-        - distrobox
         - htop
-        - btop
-        - bibata-cursor-themes
+        - bibata-cursor-theme
         - papirus-icon-theme
         - jotta-cli
 
