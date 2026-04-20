@@ -18,13 +18,14 @@ modules:
   - type: dnf
     repos:
       copr:
-        - ryanabx/cosmic-epoch # The COSMIC COPR!
+        - ryanabx/cosmic-epoch # The COSMIC COPR
+        - peterwu/rendezvous # The official Bibata Cursors COPR
     install:
       packages:
         - "@cosmic-desktop" # Now installed via DNF!
         - neovim
         - htop
-        - bibata-cursor-theme
+        - bibata-cursor-themes
         - papirus-icon-theme
         - jotta-cli
 
