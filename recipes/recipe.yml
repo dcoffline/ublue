@@ -20,8 +20,8 @@ modules:
       files:
         add:
           - https://repo.jotta.cloud/jotta-cli.repo
-        copr:
-          - ryanabx/cosmic-epoch # The COSMIC COPR!
+      copr:
+        - ryanabx/cosmic-epoch # The COSMIC COPR!
     install:
       packages:
         - "@cosmic-desktop" # Now installed via DNF!
