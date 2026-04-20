@@ -1,47 +1,39 @@
-This is a fantastic foundation for a README! You already have the critical rpm-ostree rebase commands perfectly documented, which is usually the part that trips most people up.
-
-To make this a top-tier GitHub repository, we should expand it to reflect the massive amount of custom engineering you just did. We need to highlight the Modern CLI Stack (your Rust tools), the Automated Systemd Services (your headless integrations), and add a Post-Installation checklist so you (or anyone else who forks this) knows exactly what to do after the first boot.
-
-Here is an expanded, production-ready version of your README. Feel free to copy and paste this directly!
-
 🏰 Bazzite-Fortress
 A custom, highly opinionated atomic operating system built on top of Bazzite and Fedora Silverblue. Designed for power users, Bazzite-Fortress merges the stability of a cloud-native, immutable home server with the bleeding-edge performance of the Rust-based COSMIC desktop environment.
 
 Built autonomously via GitHub Actions using BlueBuild.
 
 📖 The Philosophy
-The goal of the Fortress is simple: Zero Maintenance. By baking third-party repositories, systemd services, and modern CLI tools directly into the OS image, the operating system manages its own dependencies. If a hard drive fails or you buy a new computer, you can recreate your exact 10TB media server, Cloudflare tunnels, and development environment in a single command, in under 10 minutes.
+The goal of the Fortress is simple: Zero Maintenance. 
+By baking third-party repositories, systemd services, and modern CLI tools directly into the OS image, the operating system manages its own dependencies. If a hard drive fails or you buy a new computer, you can recreate your exact media server, Cloudflare tunnels, and development environment in a single command, in under 10 minutes.
 
 ✨ Features & Arsenal
-This image starts with the bazzite-dx-gnome base and layers on a heavily customized stack:
+This image starts with the `bazzite-dx-gnome` base and layers on a heavily customized stack:
 
 🖥️ Desktop Environments
 Dual Boot: Ships with Fedora's standard GNOME environment and System76's highly anticipated COSMIC Desktop Epoch (Nightly via COPR).
 
-Theming: Pre-configured globally with Bibata Cursors (Modern Ice) and the Papirus Icon Theme (Darker).
+Theming: Pre-configured globally with `Bibata Cursors` (Modern Ice) and the `Papirus Icon Theme` (Darker).
 
 ☁️ Storage & Networking (Headless)
 Native Cloudflared: Bakes in the official Cloudflare RPM to run your zero-trust domain tunnels headlessly at boot.
 
-Storage Pooling: Includes mergerfs for seamless multi-drive pooling.
+Storage Pooling: Includes `mergerfs` for seamless multi-drive pooling.
 
-Cloud Sync: Natively integrates rclone (for 10TB mounts) and jotta-cli (official RPM) for background syncing.
+Cloud Sync: Natively integrates `rclone` (for 10TB mounts) and `jotta-cli` (official RPM) for background syncing.
 
 🦀 The "Modern Rust" CLI Stack
-Homebrew has been entirely ripped out. This image bakes the best modern terminal utilities directly into /usr/bin for instant execution alongside zsh, neovim, htop, and btop:
+Greatly reduced dependence on Homebrew. This image bakes the best modern terminal utilities directly into /usr/bin for instant execution alongside `zsh`, `neovim`, `htop`, and `btop`:
 
-eza (Modern ls) | bat (Modern cat) | zoxide (Smarter cd)
-
-yazi (Terminal File Manager) | fzf (Fuzzy Finder) | ripgrep & fd-find
-
-atuin (Synced Shell History) | chezmoi (Dotfile Manager) | tealdeer (Fast TLDR)
+`eza` (Modern ls)              | `bat` (Modern cat)          | `zoxide` (Smarter cd)
+`yazi` (Terminal File Manager) | `fzf` (Fuzzy Finder)        | `ripgrep` & `fd-find`
+`atuin` (Synced Shell History) | `chezmoi` (Dotfile Manager) | `tealdeer` (Fast TLDR)
 
 ⚙️ Baked-In Systemd Automation
 The OS image natively enables the following services on installation:
 
-System (Headless): cloudflared.service, rclone-mounts.service
-
-User (Wayland): jottad.service, sunshine.service, monitor-control.service, groq-dictate.service
+System (Headless): `cloudflared.service`, `rclone-mounts.service`
+User    (Wayland): `jottad.service`, `sunshine.service`, `monitor-control.service`, `groq-dictate.service`
 
 ⚠️ Important Alpha Warning
 This image pulls the nightly builds of the COSMIC desktop environment directly from ryanabx/cosmic-epoch. Because COSMIC is currently in heavy development, you may experience memory leaks if you leave your desktop session running for multiple days.
@@ -54,35 +46,35 @@ To rebase an existing atomic Fedora/Bazzite installation to bazzite-fortress:
 1. Rebase to the Unverified Image
 First, you must pull the unsigned image so your system can download and install the proper cryptographic signing keys and policies:
 
-Bash
-sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/dcoffline/bazzite-fortress:latest
+`sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/dcoffline/bazzite-fortress:latest`
+
 2. Reboot
 Reboot your machine to complete the initial rebase and boot into the Fortress:
 
-Bash
-systemctl reboot
+`systemctl reboot`
+
 3. Lock the Gates (Enforce Signatures)
 Once rebooted, rebase one final time to the verified, signed image. This ensures all future background updates are cryptographically verified for security:
 
-Bash
-sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/dcoffline/bazzite-fortress:latest
-systemctl reboot
+`sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/dcoffline/bazzite-fortress:latest`
+`systemctl reboot`
+
 🛠️ Post-Installation Setup
 Because this image bakes your custom systemd services directly into the immutable core (/usr/lib/systemd/user/), you must clean up your local mutable overrides to let the OS take control.
 
 1. Delete Local Systemd Overrides:
 Open your terminal and run the following to remove your old local scripts:
 
-Bash
-rm ~/.config/systemd/user/monitor-control.service
-rm ~/.config/systemd/user/sunshine.service
-rm ~/.config/systemd/user/groq-dictate.service
-rm ~/.config/systemd/user/jottad.service
+`rm ~/.config/systemd/user/monitor-control.service`
+`rm ~/.config/systemd/user/sunshine.service`
+`rm ~/.config/systemd/user/groq-dictate.service`
+`rm ~/.config/systemd/user/jottad.service`
+
 2. Authenticate Jottacloud:
 Since the jottad daemon is now managed natively by the OS, simply re-authenticate your account:
 
-Bash
-jotta-cli login
+`jotta-cli login`
+
 3. Configure COSMIC Defaults:
 Log into the COSMIC session, navigate to Settings > Default Apps, and set your terminal to cosmic-term and your file manager to cosmic-files to take full advantage of the Rust-based UI.
 
