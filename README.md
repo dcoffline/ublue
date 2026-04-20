@@ -13,8 +13,6 @@ This image starts with the `bazzite-dx-gnome` base and layers on a heavily custo
 🖥️ Desktop Environments
 Dual Boot: Ships with Fedora's standard GNOME environment and System76's highly anticipated COSMIC Desktop Epoch (Nightly via COPR).
 
-Theming: Pre-configured globally with Bibata Cursors (Modern Ice) and the Papirus Icon Theme (Darker).
-
 ☁️ Storage & Networking (Headless)
 Native Cloudflared: Bakes in the official Cloudflare RPM to run your zero-trust domain tunnels headlessly at boot.
 
