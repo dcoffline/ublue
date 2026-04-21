@@ -22,11 +22,20 @@ modules:
   - type: dnf
     install:
       packages:
-        - "@cosmic-desktop"      # The COSMIC desktop environment group
-        - "@cosmic-desktop-apps" # The COSMIC desktop applications group
-        - jotta-cli              # The official Jottacloud CLI client (RPM)
-        - swayidle               # Idle management for sway (and COSMIC)
-        - cloudflared            # Cloudflare Tunnel client
+        - "@cosmic-desktop"     # The COSMIC desktop environment group
+        - cosmic-term           # Native Terminal
+        - cosmic-files          # Native File Manager
+        - cosmic-edit           # Native Text Editor
+        - cosmic-store          # Native App Store
+        - cosmic-player         # Native Media Player
+        - cosmic-screenshot     # Native Screenshot Tool
+        - jotta-cli             # The official Jottacloud CLI client (RPM)
+        - cloudflared           # Cloudflare Tunnel client
+    remove:
+      packages:
+        - thunderbird           # Remove Thunderbird mail client
+        - virt-manager          # Remove Virtual Machine Manager
+        - gnome-calculator      # Remove GNOME Calculator
         
   - type: systemd
     system:
