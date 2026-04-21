@@ -6,29 +6,27 @@ description: Eric's custom Bazzite image with GNOME and COSMIC
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/bazzite-dx-gnome
-image-version: stable          # latest is also supported if you want new updates ASAP
+image-version: stable # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 modules:
   - type: files
     files:
       - source: system
-        destination: /         # copies files/system/* into your image's root folder /
+        destination: / # copies files/system/* into your image's root folder /
 
   - type: script
     snippets:
       - "mkdir -p /usr/local/bin" # Prepare for Cloudflared
   
   - type: dnf
-    repos:
-      copr:
-      - ryanabx/cosmic-epoch    # The COSMIC COPR
     install:
       packages:
-        - "@cosmic-desktop"     # The COSMIC desktop environment group
-        - jotta-cli             # The official Jottacloud CLI client (RPM)
-        - swayidle              # Idle management for sway (and COSMIC)
-        - cloudflared           # Cloudflare Tunnel client
+        - "@cosmic-desktop"      # The COSMIC desktop environment group
+        - "@cosmic-desktop-apps" # The COSMIC desktop applications group
+        - jotta-cli              # The official Jottacloud CLI client (RPM)
+        - swayidle               # Idle management for sway (and COSMIC)
+        - cloudflared            # Cloudflare Tunnel client
         
   - type: systemd
     system:
@@ -37,6 +35,6 @@ modules:
         - rclone-mounts.service
     user:
       enabled:
-        - jottad.service          # This will now enable the official RPM service!
+        - jottad.service
       
-  - type: signing                 # KEEP COMMENTED OUT UNTIL YOU GENERATE YOUR KEYS!
+  - type: signing
