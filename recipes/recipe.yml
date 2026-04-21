@@ -17,27 +17,16 @@ modules:
 
   - type: script
     snippets:
-      - "mkdir -p /usr/local/bin" # Prepare for Cloudflared
+      - "mkdir -p /usr/local/bin" # necessary for cloudflared
   
   - type: dnf
     install:
       packages:
-        - "@cosmic-desktop"     # The COSMIC desktop environment group
-        - cosmic-term           # Native Terminal
-        - cosmic-files          # Native File Manager
-        - cosmic-edit           # Native Text Editor
-        - cosmic-store          # Native App Store
-        - cosmic-player         # Native Media Player
-        - cosmic-screenshot     # Native Screenshot Tool
-        - jotta-cli             # The official Jottacloud CLI client (RPM)
-        - cloudflared           # Cloudflare Tunnel client
-    remove:
-      packages:
-        - thunderbird           # Remove Thunderbird mail client
-        - virt-manager          # Remove Virtual Machine Manager
-        - gnome-calculator      # Remove GNOME Calculator
-        
-  - type: systemd
+        - "@cosmic-desktop"
+        - jotta-cli
+        - cloudflared
+
+- type: systemd
     system:
       enabled:
         - cloudflared.service
