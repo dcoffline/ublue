@@ -17,38 +17,18 @@ modules:
 
   - type: script
     snippets:
-      - "mkdir -p /usr/local/bin"
+      - "mkdir -p /usr/local/bin" # Prepare for Cloudflared
   
   - type: dnf
     repos:
       copr:
       - ryanabx/cosmic-epoch    # The COSMIC COPR
-      - lihaohong/yazi          # Added for yazi
-      - zeno/scrcpy             # Added for scrcpy
     install:
       packages:
         - "@cosmic-desktop"     # The COSMIC desktop environment group
         - jotta-cli             # The official Jottacloud CLI client (RPM)
         - swayidle              # Idle management for sway (and COSMIC)
-        - python3-devel
-        # --- The Homebrew Replacements ---
-        - atuin                 # Shell history sync
-        - bat                   # Cat clone with syntax highlighting
-        - chezmoi               # Dotfile manager
-        - eza                   # Modern ls replacement
-        - fd-find               # Modern find (Fedora names it fd-find)
-        - fzf                   # Fuzzy finder
-        - gh                    # GitHub CLI (Crucial for managing this recipe!)
-        - ripgrep               # Fast grep
-        - scrcpy                # Android screen mirroring
-        - tealdeer              # Fast tldr pages
-        - trash-cli             # CLI trash bin
-        - yazi                  # Terminal file manager
-        - yq                    # YAML processor
-        - zoxide                # Smarter cd
         - cloudflared           # Cloudflare Tunnel client
-        - neovim                # The Neovim text editor
-        - htop                  # Interactive process viewer
         
   - type: systemd
     system:
@@ -58,14 +38,5 @@ modules:
     user:
       enabled:
         - jottad.service          # This will now enable the official RPM service!
-        - groq-dictate.service
-        - monitor-control.service
-
-  - type: default-flatpaks
-    configurations:
-      - notify: true              # Send notification after install/uninstall is finished (true/false)
-        scope: system
-        #install:                 # Removed the empty install: line to fix syntax error)
-      - scope: user               # Also add Flathub user repo, but no user packages
       
   - type: signing                 # KEEP COMMENTED OUT UNTIL YOU GENERATE YOUR KEYS!
