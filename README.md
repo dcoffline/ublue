@@ -1,6 +1,6 @@
 **🏰 Bazzite-Fortress**
 
-A custom, slightly opinionated version of Bazzite and Fedora Silverblue. Designed for power users, Bazzite-Fortress merges the stability of a cloud-native, immutable home server with the bleeding-edge performance of the Rust-based COSMIC desktop environment.
+A custom, slightly opinionated version of Bazzite and Fedora Silverblue. Designed for power users, Bazzite-Fortress was created for the stability of a cloud-native, immutable home server.
 
 Built autonomously via GitHub Actions using BlueBuild.
 
@@ -12,10 +12,6 @@ By baking third-party repositories and systemd services into the OS image, the o
 **✨ Features & Arsenal**
 
 This image starts with the `bazzite-dx-gnome` base and layers on a customized stack:
-
-**🖥️ Desktop Environments**
-
-Dual Desktops: Ships with both Fedora's standard GNOME environment and their official implementation of COSMIC Desktop.
 
 **☁️ Storage & Networking (Headless)**
 
